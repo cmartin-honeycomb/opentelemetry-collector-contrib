@@ -47,11 +47,12 @@ func (g *maxMindProvider) AutonomousSystem(_ context.Context, ipAddress net.IP) 
 	switch g.geoReader.Metadata().DatabaseType {
 	case geoIP2IspDBType, geoLite2AsnDBType:
 		attrs, err := g.asAttributes(ipAddress)
-		if err != nil {
+		switch {
+		case err != nil:
 			return attribute.Set{}, err
-		} else if len(*attrs) == 0 {
+		case len(*attrs) == 0:
 			return attribute.Set{}, provider.ErrNoMetadataFound
-		} else if (*attrs)[0].Value.AsInt64() == 0 {
+		case (*attrs)[0].Value.AsInt64() == 0:
 			return attribute.Set{}, provider.ErrNoMetadataFound
 		}
 		return attribute.NewSet(*attrs...), nil
