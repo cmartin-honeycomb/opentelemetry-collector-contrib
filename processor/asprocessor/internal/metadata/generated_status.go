@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	Type      = component.MustNewType("geoip")
-	ScopeName = "github.com/open-telemetry/opentelemetry-collector-contrib/processor/geoipprocessor"
+	Type      = component.MustNewType("as")
+	ScopeName = "github.com/open-telemetry/opentelemetry-collector-contrib/processor/asprocessor"
 )
 
 const (
