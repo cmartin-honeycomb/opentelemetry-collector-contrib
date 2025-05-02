@@ -62,7 +62,7 @@ func TestProviderLocation(t *testing.T) {
 			name:           "no IP metadata in database",
 			sourceIP:       net.IPv4(0, 0, 0, 0),
 			testDatabase:   "GeoIP2-ISP-Test.mmdb",
-			expectedErrMsg: "no asn metadata found",
+			expectedErrMsg: "no ASN metadata found",
 		},
 		{
 			name:         "all attributes should be present for IPv4 using GeoLite2-ASN database",
